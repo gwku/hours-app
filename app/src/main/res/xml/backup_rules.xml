@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android Auto Backup only restores when a new device is set up, so it is a
+    convenience, not the safety net. The real protection is the nightly upload
+    in BackupWorker. Everything is included here; there is nothing device
+    specific worth excluding.
+-->
+<full-backup-content />
