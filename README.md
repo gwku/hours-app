@@ -3,6 +3,8 @@
 An Android app for tracking hours worked and money earned across a handful of
 private clients.
 
+![Recording a day, with the week strip above it and the day's total below](docs/cover.png)
+
 I built it for my mother, who cleans for private households. She used to scribble
 hours in her diary and retype them into a spreadsheet later, an evening's work
 every month, and by mid-year the spreadsheet had drifted: hand-typed amounts
