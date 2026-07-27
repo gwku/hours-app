@@ -41,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -288,7 +289,9 @@ fun OverviewScreen(
                                 R.string.hours_with_unit,
                                 formatHours(total.hours, locale, maxDecimals = 2)
                             ),
-                            total.visitCount
+                            pluralStringResource(
+                                R.plurals.visit_count, total.visitCount, total.visitCount
+                            )
                         ),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant

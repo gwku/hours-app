@@ -54,6 +54,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -164,7 +165,11 @@ fun DayScreen(
                     } else {
                         stringResource(
                             R.string.week_summary,
-                            weekSummary.visitCount,
+                            pluralStringResource(
+                                R.plurals.visit_count,
+                                weekSummary.visitCount,
+                                weekSummary.visitCount
+                            ),
                             stringResource(
                                 R.string.hours_with_unit,
                                 formatHours(weekSummary.hours, locale)

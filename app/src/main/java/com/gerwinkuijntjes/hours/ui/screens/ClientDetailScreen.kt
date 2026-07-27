@@ -39,6 +39,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -113,7 +114,7 @@ fun ClientDetailScreen(
                 ClientDot(current.color, size = 13)
                 Spacer(Modifier.padding(horizontal = 6.dp))
                 Text(
-                    text = stringResource(R.string.visits_recorded, counts[current.id] ?: 0),
+                    text = pluralStringResource(R.plurals.visits_recorded, counts[current.id] ?: 0, counts[current.id] ?: 0),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

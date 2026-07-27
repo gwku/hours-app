@@ -13,7 +13,7 @@
     <string name="previous_week">Week terug</string>
     <string name="next_week">Week verder</string>
     <string name="go_to_today">Vandaag</string>
-    <string name="week_summary">Deze week: %1$d keer · %2$s · %3$s</string>
+    <string name="week_summary">Deze week: %1$s · %2$s · %3$s</string>
     <string name="week_empty">Deze week nog niets ingevuld.</string>
     <string name="day_total">Deze dag</string>
     <string name="day_empty">Nog niets ingevuld voor deze dag.</string>
@@ -45,8 +45,8 @@
     <string name="by_month">Per maand</string>
     <string name="whole_year">Heel jaar</string>
     <string name="earned">Verdiend</string>
-    <string name="overview_summary">%1$s in %2$d keer</string>
-    <string name="overview_summary_extra">%1$s in %2$d keer · waarvan %3$s extra</string>
+    <string name="overview_summary">%1$s in %2$s</string>
+    <string name="overview_summary_extra">%1$s in %2$s · waarvan %3$s extra</string>
     <string name="nothing_recorded">Nog niets ingevuld.</string>
     <string name="per_client">Per klant</string>
     <string name="column_client">Klant</string>
@@ -106,7 +106,7 @@
     <string name="settings_clients">Klanten</string>
     <string name="client_summary_days">%1$s per uur · %2$s</string>
     <string name="client_summary_no_days">%1$s per uur · geen vaste dag</string>
-    <string name="visits_recorded">%1$d keer ingevuld</string>
+    
     <string name="backup_subtitle_never">Nog niet ingesteld</string>
     <string name="backup_subtitle_ok">Laatste backup %1$s</string>
     <string name="edit_client">Klant wijzigen</string>
@@ -145,4 +145,12 @@
     <string name="dav_server">de server gaf een foutmelding (%1$d)</string>
     <string name="dav_unexpected">er ging iets mis (%1$s)</string>
     <string name="backup_overdue">Er staan uren op deze telefoon die nog niet in een backup staan.</string>
+    <plurals name="visit_count">
+        <item quantity="one">%d keer</item>
+        <item quantity="other">%d keer</item>
+    </plurals>
+    <plurals name="visits_recorded">
+        <item quantity="one">%d keer ingevuld</item>
+        <item quantity="other">%d keer ingevuld</item>
+    </plurals>
 </resources>
