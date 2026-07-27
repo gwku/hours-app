@@ -101,16 +101,7 @@ class HoursRepository(private val context: Context) {
         dao.clearClients()
     }
 
-    /** First launch: load the clients and history bundled with the app. */
-    suspend fun seedIfEmpty() = withContext(Dispatchers.IO) {
-        if (dao.clientCount() > 0) return@withContext
-        val json = context.assets.open(SEED_ASSET).bufferedReader().use { it.readText() }
-        importJson(json)
-    }
-
     companion object {
-        private const val SEED_ASSET = "seed.json"
-
         val PALETTE = listOf(
             0xFFC2703DL, 0xFF3D7AC2L, 0xFF8A5BB5L, 0xFF3F9E7AL,
             0xFFC24A6BL, 0xFFA8912FL, 0xFF5A7D3DL, 0xFFB5563DL

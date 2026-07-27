@@ -2,7 +2,6 @@ package com.gerwinkuijntjes.hours
 
 import android.app.Application
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gerwinkuijntjes.hours.backup.BackupSettings
@@ -111,12 +110,6 @@ class HoursViewModel(application: Application) : AndroidViewModel(application) {
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     init {
-        viewModelScope.launch {
-            // A broken seed file should leave an empty app, not a crash loop on
-            // the very first launch, when the user has nothing to go back to.
-            runCatching { repository.seedIfEmpty() }
-                .onFailure { Log.e("HoursViewModel", "seeding failed", it) }
-        }
         BackupWorker.schedulePeriodic(application)
     }
 
