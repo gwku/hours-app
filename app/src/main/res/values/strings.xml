@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Hours</string>
+
+    <!-- Navigation -->
+    <string name="tab_today">Record</string>
+    <string name="tab_overview">Overview</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Day screen -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="pick_a_date">Pick a date</string>
+    <string name="previous_week">Previous week</string>
+    <string name="next_week">Next week</string>
+    <string name="go_to_today">Today</string>
+    <string name="week_summary">This week: %1$d visits · %2$s · %3$s</string>
+    <string name="week_empty">Nothing recorded this week yet.</string>
+    <string name="day_total">This day</string>
+    <string name="day_empty">Nothing recorded for this day yet.</string>
+    <string name="other_client">Other client</string>
+    <string name="no_fixed_clients">No regular clients on %1$s. Pick a client below if you worked anyway.</string>
+    <string name="all_clients_shown">All clients are listed above.</string>
+    <string name="hours_unit">h</string>
+    <string name="hours_field">Number of hours</string>
+    <string name="quarter_less">Quarter of an hour less</string>
+    <string name="quarter_more">Quarter of an hour more</string>
+    <string name="includes_extra">%1$s · incl. %2$s extra</string>
+    <string name="rate_per_hour">%1$s per hour</string>
+    <string name="rate_per_hour_plus_extra">%1$s per hour, plus %2$s extra per visit</string>
+    <string name="amount_label">Amount (€)</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="delete_visit_title">Delete this visit?</string>
+    <string name="delete_visit_message">%1$s on this day will be removed.</string>
+    <string name="enter_hours_first">Enter the number of hours first</string>
+    <string name="amount_not_valid">That amount is not a number</string>
+    <string name="saved_toast">%1$s: %2$s saved</string>
+    <string name="updated_toast">Updated</string>
+    <string name="deleted_toast">Deleted</string>
+    <string name="hours_with_unit">%1$s hours</string>
+
+    <!-- Overview -->
+    <string name="by_month">By month</string>
+    <string name="whole_year">Whole year</string>
+    <string name="earned">Earned</string>
+    <string name="overview_summary">%1$s in %2$d visits</string>
+    <string name="overview_summary_extra">%1$s in %2$d visits · of which %3$s extra</string>
+    <string name="nothing_recorded">Nothing recorded yet.</string>
+    <string name="per_client">Per client</string>
+    <string name="column_client">Client</string>
+    <string name="column_times">Visits</string>
+    <string name="column_hours">Hours</string>
+    <string name="column_amount">Amount</string>
+    <string name="column_total">Total</string>
+    <string name="all_visits">All visits</string>
+    <string name="no_visits_in_period">No visits in this period.</string>
+    <string name="previous_month">Previous month</string>
+    <string name="next_month">Next month</string>
+
+    <!-- Settings -->
+    <string name="settings_intro">Rates and regular days per client.</string>
+    <string name="client_name">Name</string>
+    <string name="client_rate">Per hour (€)</string>
+    <string name="client_default_hours">Usually (hours)</string>
+    <string name="client_extra">Extra per visit (€)</string>
+    <string name="client_fixed_days">Regular days</string>
+    <string name="rate_change_note">A new rate only applies to what you record from now on. Everything already recorded stays as it was.</string>
+    <string name="add_client">Add client</string>
+    <string name="new_client_name">Name of the client</string>
+    <string name="delete_client_title">Delete %1$s?</string>
+    <string name="delete_client_message">The %1$d visits already recorded stay in the overview.</string>
+    <string name="delete_client_message_empty">Nothing has been recorded for this client yet.</string>
+
+    <!-- Backup -->
+    <string name="backup_section">Backup</string>
+    <string name="backup_explanation">A copy is saved to your WebDAV server automatically, so nothing is lost if this phone breaks.</string>
+    <string name="backup_now">Back up now</string>
+    <string name="backup_running">Sending…</string>
+    <string name="backup_last_success">Last backup: %1$s</string>
+    <string name="backup_never">No backup has been made yet.</string>
+    <string name="backup_failed">Sending failed. It will try again automatically.</string>
+    <string name="backup_succeeded">Backup sent</string>
+    <string name="backup_server_url">Server address (WebDAV)</string>
+    <string name="backup_username">User name</string>
+    <string name="backup_password">App password</string>
+    <string name="backup_not_configured">No server filled in yet, so no backups are being saved.</string>
+    <string name="backup_nothing_to_do">There is nothing to back up yet.</string>
+    <string name="backup_folder_hint">Use an app password if your server supports one, so it can be revoked on its own.</string>
+    <string name="save_to_file">Save to a file</string>
+    <string name="restore_from_file">Restore from a file</string>
+    <string name="restore_title">Restore backup?</string>
+    <string name="restore_message">This replaces everything currently in the app.</string>
+    <string name="restore_done">Restored: %1$d clients and %2$d visits</string>
+    <string name="restore_failed">That file could not be read</string>
+    <string name="export_done">File saved</string>
+
+    <!-- Danger zone -->
+    <string name="erase_section">Start over</string>
+    <string name="erase_all">Erase all data</string>
+    <string name="erase_title">Erase everything?</string>
+    <string name="erase_message">All recorded hours and clients will be removed. This cannot be undone.</string>
+    <string name="erased">Erased</string>
+    <string name="back">Back</string>
+    <string name="settings_clients">Clients</string>
+    <string name="client_summary_days">%1$s per hour · %2$s</string>
+    <string name="client_summary_no_days">%1$s per hour · no regular day</string>
+    <string name="visits_recorded">%1$d recorded</string>
+    <string name="backup_subtitle_never">Not set up yet</string>
+    <string name="backup_subtitle_ok">Last backup %1$s</string>
+    <string name="edit_client">Edit client</string>
+    <string name="stat_visits">Visits</string>
+    <string name="stat_hours">Hours</string>
+    <string name="stat_per_hour">Per hour</string>
+    <string name="stat_per_month">Per month</string>
+    <string name="chart_title">Per month in %1$d</string>
+    <string name="chart_empty">Nothing recorded in %1$d yet.</string>
+    <string name="busiest_client">Most work: %1$s (%2$s)</string>
+    <string name="of_which_extra">of which %1$s extra</string>
+    <string name="previous_year">Previous year</string>
+    <string name="next_year">Next year</string>
+    <string name="backup_needs_folder">Fill in the server address first.</string>
+    <string name="backup_needs_https">The address has to start with https://</string>
+    <string name="backup_needs_login">Fill in the user name and app password.</string>
+    <string name="backup_folder">Folder</string>
+    <string name="backup_folder_root">Server root</string>
+    <string name="choose_folder">Choose folder</string>
+    <string name="use_this_folder">Use this folder</string>
+    <string name="new_folder">New folder</string>
+    <string name="new_folder_name">Folder name</string>
+    <string name="folder_empty">No folders here.</string>
+    <string name="up_one_level">Up one level</string>
+    <string name="test_connection">Test connection</string>
+    <string name="connection_ok">Connection works</string>
+    <string name="last_error">Last attempt failed: %1$s</string>
+    <string name="dav_unauthorized">the user name or app password is wrong</string>
+    <string name="dav_forbidden">this account may not write there</string>
+    <string name="dav_not_found">that folder does not exist on the server</string>
+    <string name="dav_not_webdav">that address does not speak WebDAV</string>
+    <string name="dav_exists">a folder with that name already exists</string>
+    <string name="dav_out_of_space">the server is out of space</string>
+    <string name="dav_unreachable">the server cannot be reached</string>
+    <string name="dav_insecure">the secure connection failed</string>
+    <string name="dav_server">the server replied with an error (%1$d)</string>
+    <string name="dav_unexpected">something went wrong (%1$s)</string>
+    <string name="backup_overdue">There are hours here that have not been backed up yet.</string>
+</resources>

@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Uren</string>
+
+    <!-- Navigatie -->
+    <string name="tab_today">Registreer</string>
+    <string name="tab_overview">Overzicht</string>
+    <string name="tab_settings">Instellingen</string>
+
+    <!-- Dagscherm -->
+    <string name="today">Vandaag</string>
+    <string name="yesterday">Gisteren</string>
+    <string name="pick_a_date">Kies een datum</string>
+    <string name="previous_week">Week terug</string>
+    <string name="next_week">Week verder</string>
+    <string name="go_to_today">Vandaag</string>
+    <string name="week_summary">Deze week: %1$d keer · %2$s · %3$s</string>
+    <string name="week_empty">Deze week nog niets ingevuld.</string>
+    <string name="day_total">Deze dag</string>
+    <string name="day_empty">Nog niets ingevuld voor deze dag.</string>
+    <string name="other_client">Andere klant</string>
+    <string name="no_fixed_clients">Geen vaste klanten op %1$s. Kies hieronder een klant als je toch gewerkt hebt.</string>
+    <string name="all_clients_shown">Alle klanten staan hierboven.</string>
+    <string name="hours_unit">u</string>
+    <string name="hours_field">Aantal uren</string>
+    <string name="quarter_less">Kwartier eraf</string>
+    <string name="quarter_more">Kwartier erbij</string>
+    <string name="includes_extra">%1$s · incl. %2$s extra</string>
+    <string name="rate_per_hour">%1$s per uur</string>
+    <string name="rate_per_hour_plus_extra">%1$s per uur, plus %2$s extra per keer</string>
+    <string name="amount_label">Bedrag (€)</string>
+    <string name="edit">Wijzigen</string>
+    <string name="cancel">Annuleren</string>
+    <string name="delete">Verwijderen</string>
+    <string name="save">Opslaan</string>
+    <string name="delete_visit_title">Deze keer verwijderen?</string>
+    <string name="delete_visit_message">%1$s van deze dag wordt weggehaald.</string>
+    <string name="enter_hours_first">Vul eerst het aantal uren in</string>
+    <string name="amount_not_valid">Dat bedrag begrijp ik niet</string>
+    <string name="saved_toast">%1$s: %2$s opgeslagen</string>
+    <string name="updated_toast">Aangepast</string>
+    <string name="deleted_toast">Verwijderd</string>
+    <string name="hours_with_unit">%1$s uur</string>
+
+    <!-- Overzicht -->
+    <string name="by_month">Per maand</string>
+    <string name="whole_year">Heel jaar</string>
+    <string name="earned">Verdiend</string>
+    <string name="overview_summary">%1$s in %2$d keer</string>
+    <string name="overview_summary_extra">%1$s in %2$d keer · waarvan %3$s extra</string>
+    <string name="nothing_recorded">Nog niets ingevuld.</string>
+    <string name="per_client">Per klant</string>
+    <string name="column_client">Klant</string>
+    <string name="column_times">Keer</string>
+    <string name="column_hours">Uren</string>
+    <string name="column_amount">Bedrag</string>
+    <string name="column_total">Totaal</string>
+    <string name="all_visits">Alle keren</string>
+    <string name="no_visits_in_period">Nog geen regels in deze periode.</string>
+    <string name="previous_month">Maand terug</string>
+    <string name="next_month">Maand verder</string>
+
+    <!-- Instellingen -->
+    <string name="settings_intro">Tarieven en vaste dagen per klant.</string>
+    <string name="client_name">Naam</string>
+    <string name="client_rate">Per uur (€)</string>
+    <string name="client_default_hours">Meestal (uur)</string>
+    <string name="client_extra">Extra per keer (€)</string>
+    <string name="client_fixed_days">Vaste dagen</string>
+    <string name="rate_change_note">Een nieuw tarief geldt alleen voor wat je hierna invult. Wat al ingevuld is blijft staan zoals het was.</string>
+    <string name="add_client">Klant toevoegen</string>
+    <string name="new_client_name">Naam van de klant</string>
+    <string name="delete_client_title">%1$s verwijderen?</string>
+    <string name="delete_client_message">De %1$d al ingevulde keren blijven in het overzicht staan.</string>
+    <string name="delete_client_message_empty">Voor deze klant is nog niets ingevuld.</string>
+
+    <!-- Backup -->
+    <string name="backup_section">Backup</string>
+    <string name="backup_explanation">Er gaat vanzelf een kopie naar je WebDAV-server, zodat er niets verloren gaat als deze telefoon stukgaat.</string>
+    <string name="backup_now">Nu een backup maken</string>
+    <string name="backup_running">Bezig met versturen…</string>
+    <string name="backup_last_success">Laatste backup: %1$s</string>
+    <string name="backup_never">Er is nog geen backup gemaakt.</string>
+    <string name="backup_failed">Versturen is niet gelukt. Het wordt vanzelf opnieuw geprobeerd.</string>
+    <string name="backup_succeeded">Backup verstuurd</string>
+    <string name="backup_server_url">Serveradres (WebDAV)</string>
+    <string name="backup_username">Gebruikersnaam</string>
+    <string name="backup_password">App-wachtwoord</string>
+    <string name="backup_not_configured">Er is nog geen server ingevuld, dus er worden geen backups bewaard.</string>
+    <string name="backup_nothing_to_do">Er is nog niets om een backup van te maken.</string>
+    <string name="backup_folder_hint">Gebruik een app-wachtwoord als je server dat ondersteunt, dan kun je het los intrekken.</string>
+    <string name="save_to_file">Opslaan in een bestand</string>
+    <string name="restore_from_file">Terugzetten uit een bestand</string>
+    <string name="restore_title">Backup terugzetten?</string>
+    <string name="restore_message">Dit vervangt alles wat er nu in de app staat.</string>
+    <string name="restore_done">Teruggezet: %1$d klanten en %2$d keren</string>
+    <string name="restore_failed">Dit bestand kan ik niet lezen</string>
+    <string name="export_done">Bestand opgeslagen</string>
+
+    <!-- Opnieuw beginnen -->
+    <string name="erase_section">Opnieuw beginnen</string>
+    <string name="erase_all">Alle gegevens wissen</string>
+    <string name="erase_title">Alles wissen?</string>
+    <string name="erase_message">Alle ingevulde uren en klanten worden weggehaald. Dit kan niet ongedaan gemaakt worden.</string>
+    <string name="erased">Gewist</string>
+    <string name="back">Terug</string>
+    <string name="settings_clients">Klanten</string>
+    <string name="client_summary_days">%1$s per uur · %2$s</string>
+    <string name="client_summary_no_days">%1$s per uur · geen vaste dag</string>
+    <string name="visits_recorded">%1$d keer ingevuld</string>
+    <string name="backup_subtitle_never">Nog niet ingesteld</string>
+    <string name="backup_subtitle_ok">Laatste backup %1$s</string>
+    <string name="edit_client">Klant wijzigen</string>
+    <string name="stat_visits">Keer</string>
+    <string name="stat_hours">Uren</string>
+    <string name="stat_per_hour">Per uur</string>
+    <string name="stat_per_month">Per maand</string>
+    <string name="chart_title">Per maand in %1$d</string>
+    <string name="chart_empty">Nog niets ingevuld in %1$d.</string>
+    <string name="busiest_client">Meeste werk: %1$s (%2$s)</string>
+    <string name="of_which_extra">waarvan %1$s extra</string>
+    <string name="previous_year">Jaar terug</string>
+    <string name="next_year">Jaar verder</string>
+    <string name="backup_needs_folder">Vul eerst het adres van de server in.</string>
+    <string name="backup_needs_https">Het adres moet met https:// beginnen.</string>
+    <string name="backup_needs_login">Vul de gebruikersnaam en het app-wachtwoord in.</string>
+    <string name="backup_folder">Map</string>
+    <string name="backup_folder_root">Hoofdmap van de server</string>
+    <string name="choose_folder">Map kiezen</string>
+    <string name="use_this_folder">Deze map gebruiken</string>
+    <string name="new_folder">Nieuwe map</string>
+    <string name="new_folder_name">Naam van de map</string>
+    <string name="folder_empty">Hier staan geen mappen.</string>
+    <string name="up_one_level">Een niveau omhoog</string>
+    <string name="test_connection">Verbinding testen</string>
+    <string name="connection_ok">Verbinding werkt</string>
+    <string name="last_error">Laatste poging mislukt: %1$s</string>
+    <string name="dav_unauthorized">de gebruikersnaam of het app-wachtwoord klopt niet</string>
+    <string name="dav_forbidden">dit account mag daar niet schrijven</string>
+    <string name="dav_not_found">die map bestaat niet op de server</string>
+    <string name="dav_not_webdav">dat adres spreekt geen WebDAV</string>
+    <string name="dav_exists">er bestaat al een map met die naam</string>
+    <string name="dav_out_of_space">de server heeft geen ruimte meer</string>
+    <string name="dav_unreachable">de server is niet bereikbaar</string>
+    <string name="dav_insecure">de beveiligde verbinding is mislukt</string>
+    <string name="dav_server">de server gaf een foutmelding (%1$d)</string>
+    <string name="dav_unexpected">er ging iets mis (%1$s)</string>
+    <string name="backup_overdue">Er staan uren op deze telefoon die nog niet in een backup staan.</string>
+</resources>
