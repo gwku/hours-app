@@ -102,7 +102,9 @@ traffic, so the upload can be tested against a server on the development machine
 
 ## First run
 
-`app/src/main/assets/seed.json` is loaded when the database is empty. What ships
-here is example data, five invented clients with their own rates and regular
-days, so a fresh clone has something to look at. Replace that file to start from
-your own, or empty its two arrays to start from nothing.
+A fresh install starts empty; nothing is imported for you. To fill it, use
+*Restore from file* on the backup screen.
+
+`testdata/seed.json` is example data, five invented clients with their own rates
+and regular days, for trying the app out. It is not part of the app, so it never
+ends up on a real install.
