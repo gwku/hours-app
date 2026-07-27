@@ -38,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.gerwinkuijntjes.hours.HoursViewModel
@@ -109,7 +110,7 @@ fun SettingsScreen(
                     leadingContent = { ClientDot(client.color, size = 13) },
                     trailingContent = {
                         Text(
-                            text = stringResource(R.string.visits_recorded, counts[client.id] ?: 0),
+                            text = pluralStringResource(R.plurals.visits_recorded, counts[client.id] ?: 0, counts[client.id] ?: 0),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

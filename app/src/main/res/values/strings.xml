@@ -13,7 +13,7 @@
     <string name="previous_week">Previous week</string>
     <string name="next_week">Next week</string>
     <string name="go_to_today">Today</string>
-    <string name="week_summary">This week: %1$d visits · %2$s · %3$s</string>
+    <string name="week_summary">This week: %1$s · %2$s · %3$s</string>
     <string name="week_empty">Nothing recorded this week yet.</string>
     <string name="day_total">This day</string>
     <string name="day_empty">Nothing recorded for this day yet.</string>
@@ -45,8 +45,8 @@
     <string name="by_month">By month</string>
     <string name="whole_year">Whole year</string>
     <string name="earned">Earned</string>
-    <string name="overview_summary">%1$s in %2$d visits</string>
-    <string name="overview_summary_extra">%1$s in %2$d visits · of which %3$s extra</string>
+    <string name="overview_summary">%1$s in %2$s</string>
+    <string name="overview_summary_extra">%1$s in %2$s · of which %3$s extra</string>
     <string name="nothing_recorded">Nothing recorded yet.</string>
     <string name="per_client">Per client</string>
     <string name="column_client">Client</string>
@@ -106,7 +106,7 @@
     <string name="settings_clients">Clients</string>
     <string name="client_summary_days">%1$s per hour · %2$s</string>
     <string name="client_summary_no_days">%1$s per hour · no regular day</string>
-    <string name="visits_recorded">%1$d recorded</string>
+    
     <string name="backup_subtitle_never">Not set up yet</string>
     <string name="backup_subtitle_ok">Last backup %1$s</string>
     <string name="edit_client">Edit client</string>
@@ -145,4 +145,12 @@
     <string name="dav_server">the server replied with an error (%1$d)</string>
     <string name="dav_unexpected">something went wrong (%1$s)</string>
     <string name="backup_overdue">There are hours here that have not been backed up yet.</string>
+    <plurals name="visit_count">
+        <item quantity="one">%d visit</item>
+        <item quantity="other">%d visits</item>
+    </plurals>
+    <plurals name="visits_recorded">
+        <item quantity="one">%d recorded</item>
+        <item quantity="other">%d recorded</item>
+    </plurals>
 </resources>
