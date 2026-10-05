@@ -39,6 +39,9 @@ interface HoursDao {
     @Query("SELECT * FROM visits WHERE date = :date")
     fun visitsOn(date: String): Flow<List<Visit>>
 
+    @Query("SELECT * FROM visits WHERE date = :date")
+    suspend fun visitsOnNow(date: String): List<Visit>
+
     @Query("SELECT * FROM visits WHERE date BETWEEN :from AND :to ORDER BY date DESC")
     fun visitsBetween(from: String, to: String): Flow<List<Visit>>
 

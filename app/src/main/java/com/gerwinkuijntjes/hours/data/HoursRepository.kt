@@ -19,6 +19,10 @@ class HoursRepository(private val context: Context) {
 
     fun visitsOn(date: LocalDate): Flow<List<Visit>> = dao.visitsOn(date.iso())
 
+    suspend fun clientsNow(): List<Client> = dao.clientsNow()
+
+    suspend fun visitsOnNow(date: LocalDate): List<Visit> = dao.visitsOnNow(date.iso())
+
     fun visitsBetween(from: LocalDate, to: LocalDate): Flow<List<Visit>> =
         dao.visitsBetween(from.iso(), to.iso())
 

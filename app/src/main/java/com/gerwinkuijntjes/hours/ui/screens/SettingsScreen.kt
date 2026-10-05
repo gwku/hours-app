@@ -1,5 +1,12 @@
 package com.gerwinkuijntjes.hours.ui.screens
 
+import android.Manifest
+import android.content.Intent
+import android.os.Build
+import android.provider.Settings
+import android.text.format.DateFormat
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,6 +22,9 @@ import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CloudUpload
 import androidx.compose.material.icons.filled.DeleteForever
+import androidx.compose.material.icons.filled.NotificationsActive
+import androidx.compose.material.icons.filled.NotificationsOff
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -25,11 +35,15 @@ import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TimePicker
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -38,9 +52,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.gerwinkuijntjes.hours.HoursViewModel
 import com.gerwinkuijntjes.hours.R
 import com.gerwinkuijntjes.hours.data.Client
@@ -49,6 +67,9 @@ import com.gerwinkuijntjes.hours.ui.components.SectionHeader
 import com.gerwinkuijntjes.hours.ui.currentLocale
 import com.gerwinkuijntjes.hours.ui.formatMoney
 import com.gerwinkuijntjes.hours.ui.shortDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.Locale
 
@@ -77,6 +98,34 @@ fun SettingsScreen(
         }
     }
     var confirmErase by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val reminderEnabled by viewModel.reminderEnabled.collectAsState()
+    val reminderTime by viewModel.reminderTime.collectAsState()
+    val notificationsAllowed by viewModel.notificationsAllowed.collectAsState()
+    var pickingTime by remember { mutableStateOf(false) }
+
+    // Notifications can be switched off in system settings while the app is in
+    // the background, so look again whenever this screen comes back.
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_START) viewModel.refreshNotificationsAllowed()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    val askNotifications = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { viewModel.refreshNotificationsAllowed() }
+
+    fun toggleReminder(on: Boolean) {
+        viewModel.setReminderEnabled(on)
+        if (on && !notificationsAllowed && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            askNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
 
     val appBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(appBarState)
@@ -134,6 +183,73 @@ fun SettingsScreen(
                     ),
                     modifier = Modifier.clickable { addingClient = true }
                 )
+            }
+
+            item { SectionHeader(stringResource(R.string.reminder_section), Modifier.padding(horizontal = 18.dp)) }
+
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.reminder_switch)) },
+                    supportingContent = {
+                        Text(
+                            if (reminderEnabled) {
+                                stringResource(R.string.reminder_summary, timeText(reminderTime, locale))
+                            } else {
+                                stringResource(R.string.reminder_summary_off)
+                            }
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Default.NotificationsActive, contentDescription = null) },
+                    trailingContent = {
+                        Switch(checked = reminderEnabled, onCheckedChange = { toggleReminder(it) })
+                    },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.background
+                    ),
+                    modifier = Modifier.clickable { toggleReminder(!reminderEnabled) }
+                )
+            }
+
+            if (reminderEnabled) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.reminder_time)) },
+                        leadingContent = { Icon(Icons.Default.Schedule, contentDescription = null) },
+                        trailingContent = {
+                            Text(
+                                timeText(reminderTime, locale),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        },
+                        colors = ListItemDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.background
+                        ),
+                        modifier = Modifier.clickable { pickingTime = true }
+                    )
+                }
+            }
+
+            if (reminderEnabled && !notificationsAllowed) {
+                item {
+                    ListItem(
+                        headlineContent = { Text(stringResource(R.string.reminder_notifications_blocked)) },
+                        leadingContent = { Icon(Icons.Default.NotificationsOff, contentDescription = null) },
+                        colors = ListItemDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.background,
+                            headlineColor = MaterialTheme.colorScheme.error,
+                            leadingIconColor = MaterialTheme.colorScheme.error
+                        ),
+                        // Once refused, Android no longer shows the question, so
+                        // send the user to the one place it can still be changed.
+                        modifier = Modifier.clickable {
+                            context.startActivity(
+                                Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                                    .putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+                            )
+                        }
+                    )
+                }
             }
 
             item { SectionHeader(stringResource(R.string.backup_section), Modifier.padding(horizontal = 18.dp)) }
@@ -209,6 +325,30 @@ fun SettingsScreen(
         )
     }
 
+    if (pickingTime) {
+        val state = rememberTimePickerState(
+            initialHour = reminderTime.hour,
+            initialMinute = reminderTime.minute,
+            is24Hour = DateFormat.is24HourFormat(context)
+        )
+        AlertDialog(
+            onDismissRequest = { pickingTime = false },
+            title = { Text(stringResource(R.string.reminder_pick_time)) },
+            text = { TimePicker(state = state) },
+            confirmButton = {
+                TextButton(onClick = {
+                    viewModel.setReminderTime(LocalTime.of(state.hour, state.minute))
+                    pickingTime = false
+                }) { Text(stringResource(R.string.ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { pickingTime = false }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
+    }
+
     if (confirmErase) {
         AlertDialog(
             onDismissRequest = { confirmErase = false },
@@ -233,6 +373,9 @@ fun SettingsScreen(
         )
     }
 }
+
+private fun timeText(time: LocalTime, locale: Locale): String =
+    time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale))
 
 @Composable
 private fun clientSummary(client: Client, locale: Locale): String {

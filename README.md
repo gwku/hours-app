@@ -36,6 +36,10 @@ and asks her to confirm it.
   the day screen says so and offers a button. A backup that fails silently is
   worse than none.
 - **Backup to a file** as well, and restore from one.
+- **Workday reminder.** At a set time (18:00 unless changed) a notification
+  names the regular clients for that day that have not been recorded yet. Days
+  that are already filled in, and days nobody is expected, stay quiet. On by
+  default; switched off or moved in Settings.
 - **English and Dutch**, following the system language.
 
 ## Tech stack

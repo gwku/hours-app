@@ -96,6 +96,21 @@
     <string name="restore_failed">That file could not be read</string>
     <string name="export_done">File saved</string>
 
+    <!-- Reminder -->
+    <string name="reminder_section">Reminder</string>
+    <string name="reminder_switch">Remind me to fill in hours</string>
+    <string name="reminder_summary">On workdays at %1$s, if something is still open</string>
+    <string name="reminder_summary_off">Off</string>
+    <string name="reminder_time">Time</string>
+    <string name="reminder_pick_time">Time of the reminder</string>
+    <string name="reminder_notifications_blocked">Notifications are turned off for this app, so the reminder cannot appear. Tap to allow them.</string>
+    <string name="reminder_title">Fill in today\'s hours</string>
+    <string name="reminder_text_clients">Not filled in yet: %1$s</string>
+    <string name="reminder_text_nothing">Nothing has been filled in for today yet.</string>
+    <string name="reminder_channel">Workday reminder</string>
+    <string name="reminder_channel_description">A nudge on workdays when the hours have not been filled in yet.</string>
+    <string name="ok">OK</string>
+
     <!-- Danger zone -->
     <string name="erase_section">Start over</string>
     <string name="erase_all">Erase all data</string>

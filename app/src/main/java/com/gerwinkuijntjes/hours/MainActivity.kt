@@ -1,9 +1,12 @@
 package com.gerwinkuijntjes.hours
 
+import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxSize
@@ -84,6 +87,17 @@ fun HoursApp() {
 
     val currentRoute = nav.currentBackStackEntryAsState().value?.destination?.route
     val onTopLevel = Tab.entries.any { it.route == currentRoute }
+
+    // The reminder is on from the start, so ask once up front whether it may
+    // post; otherwise it would sit there switched on and never appear.
+    val askNotifications = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { viewModel.refreshNotificationsAllowed() }
+    LaunchedEffect(Unit) {
+        if (viewModel.takeFirstPermissionPrompt()) {
+            askNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
 
     val messageText = message?.let { textFor(it, locale) }
     LaunchedEffect(message) {

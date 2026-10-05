@@ -96,6 +96,21 @@
     <string name="restore_failed">Dit bestand kan ik niet lezen</string>
     <string name="export_done">Bestand opgeslagen</string>
 
+    <!-- Herinnering -->
+    <string name="reminder_section">Herinnering</string>
+    <string name="reminder_switch">Herinner me aan de uren</string>
+    <string name="reminder_summary">Op werkdagen om %1$s, als er nog iets openstaat</string>
+    <string name="reminder_summary_off">Uit</string>
+    <string name="reminder_time">Tijd</string>
+    <string name="reminder_pick_time">Tijd van de herinnering</string>
+    <string name="reminder_notifications_blocked">Meldingen staan uit voor deze app, dus de herinnering kan niet verschijnen. Tik om ze toe te staan.</string>
+    <string name="reminder_title">Vul de uren van vandaag in</string>
+    <string name="reminder_text_clients">Nog niet ingevuld: %1$s</string>
+    <string name="reminder_text_nothing">Voor vandaag is nog niets ingevuld.</string>
+    <string name="reminder_channel">Herinnering op werkdagen</string>
+    <string name="reminder_channel_description">Een seintje op werkdagen als de uren nog niet zijn ingevuld.</string>
+    <string name="ok">OK</string>
+
     <!-- Opnieuw beginnen -->
     <string name="erase_section">Opnieuw beginnen</string>
     <string name="erase_all">Alle gegevens wissen</string>

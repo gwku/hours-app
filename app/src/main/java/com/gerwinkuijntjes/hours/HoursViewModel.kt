@@ -2,6 +2,7 @@ package com.gerwinkuijntjes.hours
 
 import android.app.Application
 import android.net.Uri
+import android.os.Build
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gerwinkuijntjes.hours.backup.BackupSettings
@@ -13,6 +14,8 @@ import com.gerwinkuijntjes.hours.backup.BackupWorker
 import com.gerwinkuijntjes.hours.data.Client
 import com.gerwinkuijntjes.hours.data.HoursRepository
 import com.gerwinkuijntjes.hours.data.Visit
+import com.gerwinkuijntjes.hours.reminder.ReminderSettings
+import com.gerwinkuijntjes.hours.reminder.Reminders
 import com.gerwinkuijntjes.hours.data.iso
 import com.gerwinkuijntjes.hours.data.toLocalDate
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +32,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.temporal.WeekFields
 
 /** One entry on the day screen: either already recorded, or waiting to be. */
@@ -84,6 +88,7 @@ class HoursViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = HoursRepository(application)
     private val backupSettings = BackupSettings(application)
+    private val reminderSettings = ReminderSettings(application)
 
     private val _selectedDate = MutableStateFlow(LocalDate.now())
     val selectedDate: StateFlow<LocalDate> = _selectedDate.asStateFlow()
@@ -111,6 +116,7 @@ class HoursViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         BackupWorker.schedulePeriodic(application)
+        Reminders.schedule(application)
     }
 
     // ---- day screen ----
@@ -336,6 +342,46 @@ class HoursViewModel(application: Application) : AndroidViewModel(application) {
             _messages.value = UiMessage.Erased
             afterChange()
         }
+    }
+
+    // ---- reminder ----
+
+    private val _reminderEnabled = MutableStateFlow(reminderSettings.enabled)
+    val reminderEnabled: StateFlow<Boolean> = _reminderEnabled.asStateFlow()
+
+    private val _reminderTime = MutableStateFlow(reminderSettings.time)
+    val reminderTime: StateFlow<LocalTime> = _reminderTime.asStateFlow()
+
+    /** Re-checked on return to the app: the switch for this lives in system settings. */
+    private val _notificationsAllowed = MutableStateFlow(Reminders.canNotify(application))
+    val notificationsAllowed: StateFlow<Boolean> = _notificationsAllowed.asStateFlow()
+
+    fun setReminderEnabled(enabled: Boolean) {
+        reminderSettings.enabled = enabled
+        _reminderEnabled.value = enabled
+        Reminders.schedule(getApplication())
+    }
+
+    fun setReminderTime(time: LocalTime) {
+        reminderSettings.time = time
+        _reminderTime.value = time
+        Reminders.schedule(getApplication())
+    }
+
+    fun refreshNotificationsAllowed() {
+        _notificationsAllowed.value = Reminders.canNotify(getApplication())
+    }
+
+    /**
+     * True exactly once: at first launch, when the reminder is on but may not
+     * post yet. Asking every launch would nag; never asking would leave the
+     * default-on reminder silently doing nothing.
+     */
+    fun takeFirstPermissionPrompt(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return false
+        if (!reminderSettings.enabled || reminderSettings.askedForPermission) return false
+        reminderSettings.askedForPermission = true
+        return !Reminders.canNotify(getApplication())
     }
 
     // ---- backup ----
